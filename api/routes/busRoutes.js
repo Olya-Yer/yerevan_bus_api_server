@@ -16,7 +16,6 @@ return  await dbClient.query(text,values)
     router.get('/',async (req,res,next)=>{
         try{
             const query = await selectBusIds(req.query.from, req.query.to)
-            console.log("result",query)
             const result = query.rows
             let routes = {}
             result.map(function(item,key){
@@ -29,19 +28,9 @@ return  await dbClient.query(text,values)
                 routes
         })
         }catch(err){
-console.log(err)
+            console.log(err)
         }
     })
-
-// router.get('/',async (req,res,next)=>{
-//     const text = 'SELECT a.bus_id FROM bus_routes AS a JOIN bus_routes AS b ON a.bus_id=b.bus_id WHERE a.street_name=$1 AND b.street_name=$2;'
-//     const values = [req.query.from, req.query.to]
-//     const { rows } = await dbClient.query(text,values)
-//     const result = rows[0]
-//     res.status(200).json({
-//     result
-// })
-// })
 
 router.post('/',(req,res,next)=>{
     const favorit ={
