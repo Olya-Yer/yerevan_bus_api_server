@@ -18,12 +18,15 @@ return  await dbClient.query(text,values)
             const query = await selectBusIds(req.query.from, req.query.to)
             console.log("result",query)
             const result = query.rows
-            let mod = {}
-            for(line in query.rows){
-                
-            }
+            let routes = {}
+            result.map(function(item,key){
+               return routes[item.bus_id]={
+                    ...routes[item.bus_id],
+                [key]:item.street_name
+                }
+            })
             res.status(200).json({
-            result
+                routes
         })
         }catch(err){
 console.log(err)
