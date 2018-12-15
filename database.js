@@ -1,5 +1,5 @@
 const { Pool, Client } = require('pg')
-const connectionString = 'postgresql://postgres:1111@localhost:5432/BusRoutes'
+const connectionString = 'postgresql://postgres:1111@localhost:5432/NEW_DB'
 
 const pool = new Pool({
   connectionString: connectionString,
